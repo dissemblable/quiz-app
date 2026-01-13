@@ -1,17 +1,13 @@
 services:
   web:
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: tit09876543/frontend:latest
     ports:
       - "80:80"
     depends_on:
       - backend
 
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    image: tit09876543/backend:latest
     ports:
       - "3007:3007"
     environment:
@@ -25,9 +21,7 @@ services:
       - db
 
   db:
-    build:
-      context: ./database
-      dockerfile: Dockerfile
+    image: tit09876543/database:latest
     environment:
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=password
